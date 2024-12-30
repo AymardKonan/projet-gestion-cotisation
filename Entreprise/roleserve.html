@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emplois & Departement</title>
+    <link rel="stylesheet" href="En.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="detail.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   
+    <style>
+    /* Styles généraux */
+ 
+  </style>
+
+
+</head>
+<body>
+    <header class="header">
+
+        <div class="logo">
+            <img src="LOGOCNPS.jpeg" alt="Logo">
+        </div>
+        <h1>Emplois & Departements</h1>
+        <div class="search-filter">
+            <input type="text" placeholder="Rechercher..." class="search-bar">
+            <button class="btn-filter"><i class="fa-solid fa-magnifying-glass"></i></button>
+             <label for="ajouteCotisation" class="btn-action"><i class="fa-solid fa-plus"></i></label>
+        </div>
+    </header>
+    
+    <main>
+        <div class="sidebar">
+           <div class="profile">
+                <!-- Avatar -->
+                <div class="avatar" id="avatarClick">
+                    <img id="profilePhoto" src="https://via.placeholder.com/100" alt="Avatar"> <!-- Changez cette URL -->
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="user-info">
+                    <div class="name" id="userName">John Doe</div>
+                    <div class="location" id="userLocation">Paris, France</div> <!-- La ville et le pays sont réduits ici -->
+                </div>
+            </div>
+            <ul>
+                <li><a href="accueil.html"><i class="fas fa-tachometer-alt"></i> Accueil</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Employés</a></li>
+                <li><a href="cotisation.html"><i class="fas fa-dollar-sign"></i> Cotisations</a></li>
+                <li><a href="listeEntreprise.html"><i class="fa-regular fa-building "></i> Entreprises </a></li>
+                <li class="dropdown">                
+                    <li class="dropdown">
+                        <a href="roleserve.html" class="dropdown-toggle">
+                            <i class="fa-solid fa-briefcase"></i></i>Emplois & Departements
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="roleserve.html">Roles</a></li>
+                            <li><a href="rapportServ.html">Rapport de contribution par service</a></li>
+                        </ul>
+                    </li>
+                </li>
+                 <li><a href="#"><i class="fa-solid fa-location-dot"></i> Localités</a></li>
+                 <li><a href="rapportServ.html"><i class="fas fa-list"></i>Rapport</a></li>
+                
+                <li><a href="#"><i class="fa-solid fa-bell"></i>Notifications</a></li>
+                <li><a href="#"><i class="fas fa-file-signature"></i>Audits</a></li>
+                <li><a href="#"><i class="fa-solid fa-file"></i>Documents</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i>Utiliisareurs</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i>Paramètres</a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i>Aide & Assistance</a></li>
+            </ul>
+            <button class="signout"><i class="fas fa-sign-out-alt"></i> Deconnexion</button>
+        </div>
+        <div class="content">
+            <table class="company-table">
+                <thead>
+                    <tr>
+                        <th>Departement</th>
+                        <th>Emploi</th>
+                        <th>Nombre employe</th>
+                        <th>Entreprise</th>
+                        <th>Localisation</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Informatique</td>
+                        <td>Developpemnt d'application</td>
+                        <td>4</td>
+                        <td>Onma</td>
+                        <td>Cote d'Ivoire</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Plus d'entreprises -->
+                </tbody>
+
+                <!-- Modal pour mofifier les détails de l'entreprise -->
+
+                <input type="checkbox" id="editModal" class="modal-toggle">
+                <div class="edit-modal">
+                    <div class="modal-content">
+                        <h2>Modifier l'entreprise</h2>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="edit-name">Nom de l’entreprise</label>
+                                <input type="text" id="edit-name" name="service" value="Developpemnt d'application" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-role">Roles</label>
+                                <input type="text" id="edit-role" name="roles" value="Developpement d'application" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-employe">Nombre employes</label>
+                                <input type="number" id="edit-employe" name="location" value="4" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-description">Entreprise</label>
+                                <input id="edit-description" name="nom entreprise" value="Onma" required>
+                            </div>.
+                            
+                            <div class="modal-actions">
+                                <button type="submit" class="btn-action">Enregistrer</button>
+                                <label for="editModal" class="btn-action btn-cancel">Annuler</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <!-- Modal pour afficher les détails de l'entreprise -->
+                <input type="checkbox" id="detailsModal" class="modal-toggle">
+                <div class="details-modal">
+                    <div class="modal-content">
+                        <div class="details-header">
+                            <div class="details-logo">
+                                <img src="logo-example.png" alt="Logo de l'entreprise">
+                            </div>
+                        </div>  
+                        <h2>Détails de l'entreprise</h2>
+                        <p><strong>Services :</strong> Informatique</p>
+                        <p><strong>Roles:</strong> Developpeur d'application</p>
+                        <p><strong>Entreprise :</strong> Onma</p>
+                        <p><strong>Localisation :</strong> Cote d'ivoire</p>
+                        
+
+                        <div class="details-section">
+                            <h3>Statistiques</h3>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <h4>Nombre d'employes</h4>
+                                    <p>4</p>
+                                    <button class="btn-action">Voir la liste</button>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Contributions </h4>
+                                    <p>95%</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Tendance de ce mois</h4>
+                                    <p>Jusqu'au 2025</p>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <label for="detailsModal" class="btn-action">Fermer</label>
+                               <!-- <label for="detailsModal" class="btn-action">Modifier</label> -->
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+            </table>
+            
+             
+                <div class="pagination">
+                    <button class="btn-page">Précédent</button>
+                    <button class="btn-page">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">Suivant</button>
+                </div>
+        </div>
+        
+    </main>
+
+    <script src ="javaS.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,661 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    background: linear-gradient(to right, #FFA726, #66BB6A);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position:0;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header .logo {
+    display: flex;
+    justify-content: flex-start; /* Aligne à droite */
+    align-items: center; /* Centre verticalement */
+    margin-left: 250px;
+}
+
+
+  .header .logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+.search-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.search-bar {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #000;
+    background-color: #fff;
+}
+.search-bar::placeholder {
+    color: #aaa; /* Texte du placeholder gris clair */
+}
+
+.filter {
+    color: #000;
+    background-color: #fff;
+}
+
+.filter, .btn-filter {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.text-date{
+    color: #000;
+    background-color: #fff;
+}
+
+.date-filter {
+    color: #000;
+    background-color: #fff;
+}
+
+.btn-filter {
+    background: linear-gradient(to right, #FFA726, #66BB6A);
+    color:white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+}
+
+.btn-filter:hover {
+    background: linear-gradient(to right, #FF9800, #43A047);
+}
+
+main {
+    display: flex; /* Utilisation de flexbox pour aligner la sidebar et le contenu */
+}
+ /* Sidebar */
+ .sidebar {
+    width: 10px; /* Fixer la largeur de la sidebar */
+    flex-shrink: 0; /* Empêche la sidebar de rétrécir */
+    height: 150vh; /* S'assurer qu'elle occupe toute la hauteur */
+    position:absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, #f26e09c3, #037112);
+    color: white;
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .sidebar .profile {
+    text-align: center;
+  }
+
+      /* Styles pour la section utilisateur */
+.sidebar .user-info {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;  /* Empile les éléments (avatar et nom) verticalement */
+    align-items: center; /* Aligne horizontalement les éléments au centre */
+  }
+  
+  .sidebar .user-info .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px; /* Espacement entre l'avatar et le nom */
+  }
+  
+  .sidebar .user-info .location {
+    font-size: 12px; /* Réduire la taille du texte */
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar ul li {
+    position: relative; /* Nécessaire pour le positionnement du sous-menu */
+    margin: 20px 0;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s; /* Transition pour l'effet */
+    border-radius: 10px; /* Arrondir les coins */
+    text-align: left; /* Alignement à gauche */
+  }
+
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex; /* Utiliser flex pour aligner l'icône et le texte */
+    align-items: center; /* Centrer verticalement */
+    padding: 10px; /* Ajout de padding pour un meilleur clic */
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+
+  .sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2); /* Changement de fond au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille */
+    background-color: #f0f0f0;
+  }
+
+  .sidebar ul li i {
+    margin-right: 10px; /* Espacement entre l'icône et le texte */
+  }
+
+  .sidebar .signout {
+    background: none;
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .dropdown {
+    position: relative; /* Pour positionner le sous-menu par rapport au parent */
+}
+
+   /* Style pour le menu déroulant */
+   .dropdown-menu {
+    display: none; /* Masqué par défaut */
+    position: relative;
+    left: 0;
+    top: 100%;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 50px; /* Largeur minimale pour le menu */
+}
+
+
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #555;
+    text-decoration: none; /* Supprime le soulignement */
+    transition: background 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #e0e0e0;
+}
+
+/* Affiche le menu au survol */
+.dropdown:hover .dropdown-menu {
+    display: inline-block; /* Affiche le sous-menu */
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+.dropdown-toggle:hover {
+    color: #555;
+}
+
+/* Icône de flèche pour le menu déroulant */
+.fas.fa-chevron-down {
+  float: right;
+  font-size: 12px;
+  color: #ef0707;
+}
+
+.company-table {
+    width: 85%;/* Adapter la largeur pour prendre en compte la sidebar */
+    margin-left: 250px; /* Décalage pour éviter la superposition */
+    margin-top: 20px; /* Ajoute un espacement au-dessus du tableau */
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.company-table th, .company-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.company-table th {
+    background:#66BB6A;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.company-table td {
+    font-size: 14px;
+    color: #555;
+}
+
+.btn-action {
+    padding: 8px 12px;
+    margin: 2px;
+    background: #FFA726;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s ease;
+}
+
+.btn-action:hover {
+    background: #FF9800;
+}
+
+.btn-danger {
+    background: #E53935;
+}
+
+.btn-danger:hover {
+    background: #D32F2F;
+}
+
+.pagination {
+    text-align: right;
+    margin: 20px 0;
+    
+    
+}
+.ex-imp {
+    text-align: right;
+    margin: 20px 0;
+    
+    
+}
+
+.pagination .btn-page {
+    padding: 8px 12px;
+    margin: 0 5px;
+    background: #FFA726;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.pagination .btn-page:hover {
+    background: #FF9800;
+}
+
+/* Style général de la card */
+/* Style général pour le modal */
+.details-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    width: 60%; /* Largeur plus grande */
+    max-width: 800px; /* Limite maximale */
+    border-radius: 8px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left; /* Alignement du texte à gauche */
+    overflow-y: auto; /* Permet le défilement si le contenu dépasse */
+    max-height: 80%; /* Empêche le débordement vertical */
+}
+
+/* Style pour le titre */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Style pour le texte */
+.modal-content p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Actions */
+.modal-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* Bouton "Fermer" */
+.modal-actions .btn-action {
+    padding: 10px 20px;
+    background: #FFA726;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-actions .btn-action:hover {
+    background: #FF9800;
+}
+
+/* Checkbox pour activer/désactiver le modal */
+.modal-toggle {
+    display: none; /* Masquer la checkbox */
+}
+
+/* Affiche le modal quand la checkbox est cochée */
+.modal-toggle:checked + .details-modal {
+    display: flex; /* Active l'affichage en flex */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid#ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Actions */
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Boutons */
+.btn-action {
+    padding: 10px 20px;
+    background: #66BB6A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-action:hover {
+    background: #43A047;
+}
+
+.btn-cancel {
+    background: #E53935;
+}
+
+.btn-cancel:hover {
+    background: #D32F2F;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-save {
+    background: linear-gradient(to right, #FFA726, #66BB6A);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-save:hover {
+    background: linear-gradient(to right, #FF9800, #43A047);
+}
+
+.btn-reset {
+    background: #E53935;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-reset:hover {
+    background: #D32F2F;
+}
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #66BB6A;
+    background: #fff;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+/* Checkbox pour activer/désactiver le modal */
+.modal-toggle {
+    display: none; /* Masquer la checkbox */
+}
+
+/* Affiche le modal quand la checkbox est cochée */
+.modal-toggle:checked + .edit-modal {
+    display: flex; /* Active l'affichage en flex */
+}
+
+
+/* Styles pour le modal */
+.import-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-toggle:checked + .import-modal {
+    display: flex;
+}
+
+.export-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-toggle:checked + .export-modal {
+    display: flex;
+}
+
+.import-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.addC-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-toggle:checked + .addC-modal {
+    display: flex;
+}
+
+.ajoutEntp-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-toggle:checked + .ajoutEntp-modal {
+    display: flex;
+}
+
+
+.exportcotisation-modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000; /* Assure la priorité du modal */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-toggle:checked + .exportcotisation-modal {
+    display: flex;
+}
+
+
+
+ /* Footer */
+ footer {
+    position:ab;
+    bottom: 0;
+    left: 0;
+    width: 83%;
+    margin-left: 250px;
+    background: #f8f9fa;
+    color: #4a4a4a;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+  footer a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  footer a:hover {
+    color: #0056b3;
+  }
+
+  footer img {
+    vertical-align: middle;
+  }
+
+
+
+
+

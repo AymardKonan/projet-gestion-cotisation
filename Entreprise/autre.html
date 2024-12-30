@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Grid Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="En.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="dd.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- link rel="stylesheet" href="impExp.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="LOGOCNPS.jpeg" alt="Logo">
+        </div>
+        <h1>Cotisations</h1>
+        <div class="search-filter">
+             <input type="text" placeholder="Rechercher une entreprise..." class="search-bar">
+            <select class="filter">
+                <option value="">Entreprise</option>
+                <option value="Tech">Onma</option>
+                <option value="Santé">Mikande</option>
+                <option value="Finance">NSIA</option>
+            </select>
+
+            <button class="btn-filter"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <label for="ajouteCotisation" class="btn-action"><i class="fa-solid fa-plus"></i></label>
+        </div>
+    </header>
+    <table class="company-table">
+                <thead>
+                    <tr>
+                        <th>Entreprise Code</th>
+                        <th>Entreprise Nom</th>
+                        <th>Email</th>
+                        <th>Tel</th>
+                        <th>Type de déclaration</th>
+                        <th>Periode de déclaration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>115</td>
+                        <td>Onma</td>
+                        <td>jm@gmail.com</td>
+                        <td>4452455588</td>
+                        <td>CNPS</td>
+                        <td>24-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>855</td>
+                        <td>Nike</td>
+                        <td>Nike@gmail.com</td>
+                        <td>7452447557</td>
+                        <td>CNPS</td>
+                        <td>24-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1452</td>
+                        <td>Adidas</td>
+                        <td>add@gmail.com</td>
+                        <td>7584413908</td>
+                        <td>CNPS</td>
+                        <td>24-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>120</td>
+                        <td>Mikande</td>
+                        <td>da@gmail.com</td>
+                        <td>4452455588</td>
+                        <td>CNPS</td>
+                        <td>24-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Plus d'entreprises -->
+                </tbody>
+
+                <!-- Modal pour mofifier les détails de l'entreprise -->
+
+                <input type="checkbox" id="editModal" class="modal-toggle">
+                <div class="edit-modal">
+                    <div class="modal-content">
+                        <h2>Modifier la cotisation</h2>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="edit-name">Entreprise Code</label>
+                                <input type="text" id="" name="name" value="115" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-contact">Entreprise Nom</label>
+                                <input type="text" id="" name="contact" value="Onma" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-location">Email</label>
+                                <input type="text" id="" name="location" value="jm@gmail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-description">Tel</label>
+                                <input type="number" id="" name="location" value="4452455588" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-datecreate">Type de déclaration</label>
+                                <input type="text" id="" name="" value="CNPS" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-lastupd">Periode de déclaration</label>
+                                <input type="date" id="" name="" value="24-12-2024" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-numtrans">Numero de transaction</label>
+                                <input type="number" id="" name="" value="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-cotisation">Date début de transaction </label>
+                                <input type="number" id="" name="" value="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-montant">Montant</label>
+                                <input type="number" id="edit-montant" name="" value="120" required>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button type="submit" class="btn-action">Enregistrer</button>
+                                <label for="editModal" class="btn-action btn-cancel">Annuler</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <!-- Modal pour afficher les détails de la cotisation par entreprise -->
+                <input type="checkbox" id="detailsModal" class="modal-toggle">
+                <div class="details-modal">
+                    <div class="modal-content">
+                        <div class="details-header">
+                            <div class="details-logo">
+                                <img src="logoOnma1.jpeg" alt="Logo de l'entreprise">
+                            </div>
+                        </div>  
+                        <h2>Détails de la cotisation </h2>
+                        <p><strong>Entreprise Code :</strong>115</p>
+                        <p><strong>Entreprise Nom :</strong>Onma</p>
+                        <p><strong>Email :</strong> jm@gmail.com</p>
+                        <p><strong>Tel :</strong>4452455588</p>
+                        <p><strong>Type de déclaration :</strong> ONMA est une entreprise spécialisée en solutions technologiques innovantes.</p>
+                        
+                        <div class="details-section">
+                            <h3><strong>Historique / Notes</strong></h3>
+                            <ul>
+                                <li>Periode de déclaration : 01/01/2020</li>
+                                <li>Dernière modification : 20/12/2024</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="details-section">
+                            <h3><strong>Transaction</strong></h3>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <h4>Numero de transaction</h4>
+                                    <p>120</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Date début de transaction </h4>
+                                    <p>01/01/2020</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Montant</h4>
+                                    <p>2025 XOF</p>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <label for="detailsModal" class="btn-action">Fermer</label>
+                                 <label for="exportuneCotisation" class="btn-action"><i class="fa-solid fa-file-export"></i></label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+
+            </table>
+
+    <!-- Modals for edit and view details -->
+
+    <input type="checkbox" id="editModal" class="modal-toggle">
+    <div class="edit-modal">
+        <div class="modal-content">
+            <h2>Modifier la cotisation</h2>
+            <form action="#" method="POST">
+                <!-- Form fields for editing details -->
+                <div class="modal-actions">
+                    <button type="submit" class="btn-action">Enregistrer</button>
+                    <label for="editModal" class="btn-action btn-cancel">Annuler</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <input type="checkbox" id="detailsModal" class="modal-toggle">
+    <div class="details-modal">
+        <div class="modal-content">
+            <div class="details-header">
+                <img src="logoOnma1.jpeg" alt="Logo de l'entreprise">
+            </div>
+            <h2>Détails de la cotisation</h2>
+            <p><strong>Entreprise Code :</strong> 115</p>
+            <!-- More details -->
+            <div class="modal-actions">
+                <label for="detailsModal" class="btn-action">Fermer</label>
+                <label for="exportuneCotisation" class="btn-action"><i class="fa-solid fa-file-export"></i></label>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+     <script src ="javaS.js">
+        
+    </script>
+</body>
+</html>

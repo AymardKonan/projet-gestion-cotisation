@@ -1,0 +1,98 @@
+<style>
+    /* Style de base pour la sidebar */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    position: relative;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+/* Style pour le dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.dropdown-menu li a {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #555;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #e0e0e0;
+}
+
+/* Affichage du menu au survol */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Chevron positionné */
+.dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+</style>
+
+
+<ul>
+    <li>
+        <a href="Dashboard.html"><i class="fas fa-tachometer-alt"></i> Accueil</a>
+    </li>
+    <li>
+        <a href="Gestion des Employés.html"><i class="fas fa-users"></i> Employé(s)</a>
+    </li>
+    <li>
+        <a href="Gestion des Cotisations.html"><i class="fas fa-dollar-sign"></i> Cotisation</a>
+    </li>
+    <li>
+        <a href="Liste d'Employé.html"><i class="fas fa-list"></i> Liste d'employés</a>
+    </li>
+    <li>
+        <a href="Rapport.html"><i class="fas fa-file-import"></i> Import/Rapport</a>
+    </li>
+    <!-- Liste entreprise avec menu déroulant -->
+    <li class="dropdown">
+        <a href="listeEntreprise.html" class="dropdown-toggle">
+            <i class="fas fa-file-import"></i> Liste entreprise 
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="AjouterEntreprise.html">Ajouter une entreprise</a></li>
+            <li><a href="ModifierEntreprise.html">Modifier une entreprise</a></li>
+            <li><a href="SupprimerEntreprise.html">Supprimer une entreprise</a></li>
+        </ul>
+    </li>
+</ul>

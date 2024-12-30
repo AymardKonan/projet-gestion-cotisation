@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotisation</title>
+    <link rel="stylesheet" href="En.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
+    
+   
+    <style>
+    /* Styles généraux */
+ 
+  </style>
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="LOGOCNPS.jpeg" alt="Logo">
+        </div>
+        <h1>Cotisations</h1>
+        <div class="search-filter">
+            <input type="text" placeholder="Rechercher une entreprise..." class="search-bar">
+            <select class="filter">
+                <option value="">Entreprise</option>
+                <option value="Onma">Onma</option>
+                <option value="Mikande">Mikande</option>
+                <option value="Adidas">Adidas</option>
+                <option value="Adidas">Nike</option>
+            </select>
+            <input type="date" class="date-filter" >
+
+            <button class="btn-filter"><i class="fa-solid fa-magnifying-glass"></i></button>
+             <label for="ajouteCotisation" class="btn-action"><i class="fa-solid fa-plus"></i></label>
+        </div>
+    </header>
+    
+    <main>
+        <div class="sidebar"> 
+            <div class="profile">
+
+                <div class="avatar" id="avatarClick">
+                    <img id="profilePhoto" src="https://via.placeholder.com/100" alt="Avatar"> <!-- Changez cette URL -->
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="user-info">
+                    <div class="name" id="userName">John Doe</div>
+                    <div class="location" id="userLocation">Paris, France</div> <!-- La ville et le pays sont réduits ici -->
+                </div>
+               
+            </div>
+            <ul>
+                <li><a href="accueil.html"><i class="fas fa-tachometer-alt"></i> Accueil</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Employés</a></li>
+                <li><a href="cotisation.html"><i class="fas fa-dollar-sign"></i> Cotisations</a></li>
+                <li><a href="listeEntreprise.html"><i class="fa-regular fa-building "></i> Entreprises </a></li>
+                <li class="dropdown">                
+                    <li class="dropdown">
+                        <a href="roleserve.html" class="dropdown-toggle">
+                            <i class="fa-solid fa-briefcase"></i></i>Emplois & Departements
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="roleserve.html">Roles</a></li>
+                            <li><a href="rapportServ.html">Rapport de contribution par service</a></li>
+                        </ul>
+                    </li>
+                </li>
+                 <li><a href="Liste d'Employé.html"><i class="fa-solid fa-location-dot"></i> Localités</a></li>
+                 <li><a href="rapportServ.html"><i class="fas fa-list"></i>Rapport</a></li>
+                
+                <li><a href="#"><i class="fa-solid fa-bell"></i>Notifications</a></li>
+                <li><a href="#"><i class="fas fa-file-signature"></i>Audit</a></li>
+                <li><a href="#"><i class="fa-solid fa-file"></i>Documents</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i>Utiliisareurs</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i>Paramètres</a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i>Aide & Assistance</a></li>
+            </ul>
+            <button class="signout"><i class="fas fa-sign-out-alt"></i>SE DECONNECTER</button>
+        </div>
+        
+
+        <div class="content">
+            <div class="ex-imp">
+             
+                <label for="importExcelModal" class="btn-action"><i class="fa-solid fa-upload"></i></label>
+                <!-- Bouton pour ouvrir le modal -->
+                <label for="exportExcelModal" class="btn-action"><i class="fa-solid fa-file-export"></i></label>
+            </div>
+
+            <!-- import modal-->
+            <input type="checkbox" id="importExcelModal" class="modal-toggle">
+            <div class="import-modal"> 
+                <div class="modal-content">
+                    <div class="import-header">
+                        <h2>Importer un fichier Excel</h2>
+                    </div>
+                    <form class="import-form" action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="excelFile">Sélectionnez un fichier Excel :</label>
+                            <input type="file" id="excelFile" name="excelFile" accept=".xlsx, .xls" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-action">Importer</button>
+                            <label for="importExcelModal" class="btn-action">Annuler</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal d'exportation -->
+            <input type="checkbox" id="exportExcelModal" class="modal-toggle">
+            <div class="export-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Exporter les données</h2>
+                    </div>
+
+                    <form class="export-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="exportFormat">Choisissez le format de fichier :</label>
+                            <select id="exportFormat" name="exportFormat" required>
+                                <option value="excel">Excel (.xlsx)</option>
+                                <option value="pdf">PDF (.pdf)</option>
+                                <option value="csv">CSV (.csv)</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-action">Exporter</button>
+                            <label for="exportDataModal" class="btn-action">Annuler</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                <!-- ajoute cotisation modal -->
+            <input type="checkbox" id="ajouteCotisation" class="modal-toggle">
+            <div class="addC-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Enregistrer une cotisation</h2>
+                    </div>
+
+                    <form id="add-company-form">
+                        <div class="form-group">
+                            <label for="company-name">Entreprise Code</label>
+                            <input type="text" id="company-name" name="company-name" value="" placeholder="Entreprise Code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Entreprise Nom</label>
+                            <input type="text" id="address" name="address" value="" placeholder="Entreprise Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="email" name="email" value="" placeholder="Email de entreprise" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">Téléphone</label>
+                            <div class="flex">
+                                <span id="contact-phone" class="bg-gray-200 p-2 border border-gray-300 rounded-l-md">+225</span>
+                                <input type="number" id="contact-phone" name="contact-phone" value="" placeholder="Numéro de téléphone" required oninput="validatePhoneNumber(this)"maxlength="15">
+                            </div>
+                        </div>
+                        <div class="form-group">    
+                            <label for="creation-date">Periode de déclaration</label>
+                            <input type="date" id="per-decl" value="" name="per-decl" required pattern="\d{2}/\d{2}/\d{2}" >
+                        </div>
+                        <div class="form-group">    
+                            <label for="numtrans">Numéro de transaction</label>
+                            <input type="number" id="numtrans" value="" name="numtrans" placeholder="Numéro de transaction" required>
+                        </div>
+                        <div class="form-group">    
+                            <label for="montant">Montant</label>
+                            <input type="number" id="montant" value="" name="montant" placeholder="Montant" required>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn-save">Enregistrer</button>
+                            <button type="reset" class="btn-reset">Réinitialiser le formulaire</button>
+                        </div>
+                    </form>
+
+
+                    <input type="checkbox" id="exportuneCotisation" class="modal-toggle">
+                    <div class="exportcotisation-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Exporter la cotisation</h2>
+                            </div>
+
+                            <form class="export-form" action="#" method="post">
+                                <div class="form-group">
+                                    <label for="exportFormat">Choisissez le format de fichier :</label>
+                                    <select id="exportFormat" name="exportFormat" required>
+                                        <option value="excel">Excel (.xlsx)</option>
+                                        <option value="pdf">PDF (.pdf)</option>
+                                        <option value="csv">CSV (.csv)</option>
+                                    </select>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-action">Exporter</button>
+                                    <label for="exportDataModal" class="btn-action">Annuler</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+
+
+
+
+
+                    <div class="modal-actions">
+                        <label for="ajouteCotisation" class="btn-action">Fermer</label>
+                        <!-- <label for="detailsModal" class="btn-action">Modifier</label> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+             
+            <table class="company-table">
+                <thead>
+                    <tr>
+                        <th>Code Entreprise</th>
+                        <th>Nom ou Raison social</th>
+                        <th>Email</th>
+                        <th>Tel</th>
+                        <th>Type de déclaration</th>
+                        <th>Periode de déclaration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>115</td>
+                        <td>Onma</td>
+                        <td>jm@gmail.com</td>
+                        <td>4452455588</td>
+                        <td>CNPS</td>
+                        <td>23-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>855</td>
+                        <td>Nike</td>
+                        <td>Nike@gmail.com</td>
+                        <td>7452447557</td>
+                        <td>CNPS</td>
+                        <td>24-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1452</td>
+                        <td>Adidas</td>
+                        <td>add@gmail.com</td>
+                        <td>7584413908</td>
+                        <td>CNPS</td>
+                        <td>12-01-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>120</td>
+                        <td>Mikande</td>
+                        <td>da@gmail.com</td>
+                        <td>4452455588</td>
+                        <td>CNPS</td>
+                        <td>25-12-2024</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Plus d'entreprises -->
+                </tbody>
+
+                <!-- Modal pour mofifier les détails de l'entreprise -->
+
+                <input type="checkbox" id="editModal" class="modal-toggle">
+                <div class="edit-modal">
+                    <div class="modal-content">
+                        <h2>Modifier la cotisation</h2>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="edit-name">Entreprise Code</label>
+                                <input type="text" id="" name="name" value="115" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-contact">Entreprise Nom</label>
+                                <input type="text" id="" name="contact" value="Onma" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-location">Email</label>
+                                <input type="text" id="" name="location" value="jm@gmail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-description">Tel</label>
+                                <input type="number" id="" name="location" value="4452455588" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-datecreate">Type de déclaration</label>
+                                <input type="text" id="" name="" value="CNPS" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-lastupd">Periode de déclaration</label>
+                                <input type="date" id="" name="" value="24-12-2024" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-numtrans">Numero de transaction</label>
+                                <input type="number" id="" name="" value="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-cotisation">Date début de transaction </label>
+                                <input type="number" id="" name="" value="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-montant">Montant</label>
+                                <input type="number" id="edit-montant" name="" value="120" required>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button type="submit" class="btn-action">Enregistrer</button>
+                                <label for="editModal" class="btn-action btn-cancel">Annuler</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <!-- Modal pour afficher les détails de la cotisation par entreprise -->
+                <input type="checkbox" id="detailsModal" class="modal-toggle">
+                <div class="details-modal">
+                    <div class="modal-content">
+                        <div class="details-header">
+                            <div class="details-logo">
+                                <img src="logoOnma1.jpeg" alt="Logo de l'entreprise">
+                            </div>
+                        </div>  
+                        <h2>Détails de la cotisation </h2>
+                        <p><strong>Entreprise Code :</strong>115</p>
+                        <p><strong>Entreprise Nom :</strong>Onma</p>
+                        <p><strong>Email :</strong> jm@gmail.com</p>
+                        <p><strong>Tel :</strong>4452455588</p>
+                        <p><strong>Type de déclaration :</strong> ONMA est une entreprise spécialisée en solutions technologiques innovantes.</p>
+                        
+                        <div class="details-section">
+                            <h3><strong>Historique / Notes</strong></h3>
+                            <ul>
+                                <li>Periode de déclaration : 01/01/2020</li>
+                                <li>Dernière modification : 20/12/2024</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="details-section">
+                            <h3><strong>Transaction</strong></h3>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <h4>Numero de transaction</h4>
+                                    <p>120</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Date début de transaction </h4>
+                                    <p>01/01/2020</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Montant</h4>
+                                    <p>2025 XOF</p>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <label for="detailsModal" class="btn-action">Fermer</label>
+                                 <label for="exportuneCotisation" class="btn-action"><i class="fa-solid fa-file-export"></i></label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+
+            </table>
+            
+             
+                <div class="pagination">
+                    <button class="btn-page">Précédent</button>
+                    <button class="btn-page">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">Suivant</button>
+                </div>
+        </div>
+        
+
+        
+    </main>
+    
+    <footer>
+        <p>
+        <span class="font-semibold">CNPS</span>
+        <i class="far fa-copyright"></i>
+        <span>2024 - <span id="current-year"></span></span>
+        </p>
+        <p class="mt-1">
+        Powered by
+        <a href="https://onma.io" target="_blank">
+            <img src="images/logo_ONMA.jpeg" alt="Logo" style="height:14px; width:14px; object-fit: cover;" class="rounded-full hover:scale-105">
+        </a>
+        </p>
+  </footer>
+
+ 
+
+</body>
+
+
+ 
+<script src ="javaS.js"></script>
+
+0
+</html>
+
+
+<script>
+    const inputMontant = document.getElementById('edit-montant');
+
+    // Empêcher les caractères non numériques au moment de la saisie
+    inputMontant.addEventListener('input', function () {
+        // Remplace tout ce qui n'est pas un nombre valide
+        this.value = this.value.replace(/[^0-9.]/g, '');
+    });
+</script>
+
+
+
+
+
+
+ 
+
+

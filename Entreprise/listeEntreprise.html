@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entreprises</title>
+    <link rel="stylesheet" href="En.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+   
+    <style>
+    /* Styles généraux */
+ 
+  </style>
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="LOGOCNPS.jpeg" alt="Logo">
+        </div>
+        <h1>Liste des Entreprises</h1>
+        <div class="search-filter">
+            <input type="text" placeholder="Rechercher une entreprise..." class="search-bar">
+            <select class="filter">
+                <option value="">Secteur d'activité</option>
+                <option value="Tech">Technologies</option>
+                <option value="Communication">Communication</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Automobile">Automobile</option>
+                <option value="Banque">Banque</option>
+            </select>
+            
+
+            <input type="date" class="date-filter" >
+            <button class="btn-filter"><i class="fa-solid fa-magnifying-glass"></i></button>
+             <label for="ajouteEntreprise" class="btn-action"><i class="fa-solid fa-plus"></i></label>
+        </div>
+    </header>
+    
+    <main>
+        <div class="sidebar">
+           <div class="profile">
+                <!-- Avatar -->
+                <div class="avatar" id="avatarClick">
+                    <img id="profilePhoto" src="https://via.placeholder.com/100" alt="Avatar"> <!-- Changez cette URL -->
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="user-info">
+                    <div class="name" id="userName">John Doe</div>
+                    <div class="location" id="userLocation">Paris, France</div> <!-- La ville et le pays sont réduits ici -->
+                </div>
+            </div>
+            <ul>
+                <li><a href="accueil.html"><i class="fas fa-tachometer-alt"></i> Accueil</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Employés</a></li>
+                <li><a href="cotisation.html"><i class="fas fa-dollar-sign"></i> Cotisations</a></li>
+                <li><a href="listeEntreprise.html"><i class="fa-regular fa-building "></i> Entreprises </a></li>
+                <li class="dropdown">                
+                    <li class="dropdown">
+                        <a href="roleserve.html" class="dropdown-toggle">
+                            <i class="fa-solid fa-briefcase"></i></i>Emplois & Departements
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="roleserve.html">Roles</a></li>
+                            <li><a href="rapportServ.html">Rapport de contribution par service</a></li>
+                        </ul>
+                    </li>
+                </li>
+                 <li><a href="#"><i class="fa-solid fa-location-dot"></i> Localités</a></li>
+                 <li><a href="rapportServ.html"><i class="fas fa-list"></i>Rapport</a></li>
+                
+                <li><a href="#"><i class="fa-solid fa-bell"></i>Notifications</a></li>
+                <li><a href="#"><i class="fas fa-file-signature"></i>Audit</a></li>
+                <li><a href="#"><i class="fa-solid fa-file"></i>Documents</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i>Utiliisareurs</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i>Paramètres</a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i>Aide & Assistance</a></li>
+            </ul>
+            <button class="signout"><i class="fas fa-sign-out-alt"></i> Deconnexion</button>
+        </div>
+        <div class="content">
+
+            <div class="ex-imp">
+             
+                <label for="importExcelModal" class="btn-action"><i class="fa-solid fa-upload"></i></label>
+                <!-- Bouton pour ouvrir le modal -->
+                <label for="exportExcelModal" class="btn-action"><i class="fa-solid fa-file-export"></i></label>
+            </div>
+            <input type="checkbox" id="importExcelModal" class="modal-toggle">
+            <div class="import-modal"> 
+                <div class="modal-content">
+                    <div class="import-header">
+                        <h2>Importer un fichier Excel</h2>
+                    </div>
+                    <form class="import-form" action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="excelFile">Sélectionnez un fichier Excel :</label>
+                            <input type="file" id="excelFile" name="excelFile" accept=".xlsx, .xls" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-action">Importer</button>
+                            <label for="importExcelModal" class="btn-action">Annuler</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+             <input type="checkbox" id="exportExcelModal" class="modal-toggle">
+            <div class="export-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Exporter les données</h2>
+                    </div>
+
+                    <form class="export-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="exportFormat">Choisissez le format de fichier :</label>
+                            <select id="exportFormat" name="exportFormat" required>
+                                <option value="excel">Excel (.xlsx)</option>
+                                <option value="pdf">PDF (.pdf)</option>
+                                <option value="csv">CSV (.csv)</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-action">Exporter</button>
+                            <label for="exportDataModal" class="btn-action">Annuler</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <input type="checkbox" id="ajouteEntreprise" class="modal-toggle">
+            <div class="ajoutEntp-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Ajoute Entreprise</h2>
+                    </div>
+
+                     <form id="add-company-form">
+                        <div class="form-group">
+                                <label for="documents">Ajouter des documents ou des images</label>
+                                <input type="file" id="documents" value="" name="documents" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="company-name">Nom de l’entreprise</label>
+                            <input type="text" id="company-name" name="company-name" value="" placeholder="Nom de l’entreprise" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sector">Secteur d’activité</label>
+                            <select id="sector" name="sector" required>
+                                <option value="">Sélectionner un secteur</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Santé">Santé</option>
+                                <option value="Finance">Finance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adresse</label>
+                            <input type="text" id="address" name="address" value="" placeholder="Adresse de l’entreprise" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="email" name="email" value="" placeholder="Email de contact" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">Téléphone</label>
+                            <div class="flex">
+                                <span id="contact-phone" class="bg-gray-200 p-2 border border-gray-300 rounded-l-md">+225</span>
+                                <input type="number" id="contact-phone" name="contact-phone" value="" placeholder="Numéro de téléphone" required oninput="validatePhoneNumber(this)"maxlength="15">
+                            </div>
+                            <div>
+                                <label for="country" class="block">Pays</label>
+                                <select id="country" name="country" class="mt-1 w-full border border-gray-300 rounded-md p-2" onchange="updatePhoneCode()">
+                                    <!-- Les options seront ajoutées dynamiquement ici -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" rows="4" value="" placeholder="Description de l’entreprise" required></textarea>
+                        </div>
+                        <div class="form-group">    
+                            <label for="creation-date">Date de création</label>
+                            <input type="date" id="creation-date" value="" name="creation-date" required pattern="\d{2}/\d{2}/\d{2}" >
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="submit" class="btn-save">Enregistrer</button>
+                            <button type="reset" class="btn-reset">Réinitialiser le formulaire</button>
+                        </div>
+                    </form>
+
+
+                    <input type="checkbox" id="exportuneCotisation" class="modal-toggle">
+                    <div class="exportcotisation-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Exporter la cotisation</h2>
+                            </div>
+
+                            <form class="export-form" action="#" method="post">
+                                <div class="form-group">
+                                    <label for="exportFormat">Choisissez le format de fichier :</label>
+                                    <select id="exportFormat" name="exportFormat" required>
+                                        <option value="excel">Excel (.xlsx)</option>
+                                        <option value="pdf">PDF (.pdf)</option>
+                                        <option value="csv">CSV (.csv)</option>
+                                    </select>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-action">Exporter</button>
+                                    <label for="exportDataModal" class="btn-action">Annuler</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <label for="ajouteEntreprise" class="btn-action">Fermer</label>
+                        <!-- <label for="detailsModal" class="btn-action">Modifier</label> -->
+                    </div>
+                </div>
+            </div>
+            <table class="company-table">
+                <thead>
+                    <tr>
+                        <th>Nom de l’entreprise</th>
+                        <th>Secteur d’activité</th>
+                        <th>Adresse</th>
+                        <th>Téléphone</th>
+                        <th>Email</th>
+                        <th>Pays</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Onma</td>
+                        <td>Technologies</td>
+                        <td>Abidjan</td>
+                        <td>445871230</td>
+                        <td>onma@gmail.com</td>
+                        <td>Cote d'Ivoire</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- Plus d'entreprises -->
+
+                    <tr>
+                        <td>Mikande</td>
+                        <td>Communication</td>
+                        <td>Abidjan</td>
+                        <td>114587300</td>
+                        <td>mk@gmail.com</td>
+                        <td>Cote d'Ivoire</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>BON PRIX</td>
+                        <td>Commerce</td>
+                        <td>Abidjan</td>
+                        <td>78553690</td>
+                        <td>bp@gmail.com</td>
+                        <td>Cote d'Ivoire</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>CFAO</td>
+                        <td>Automobile</td>
+                        <td>Abidjan</td>
+                        <td>1475968231</td>
+                        <td>cfao@gmail.com</td>
+                        <td>Cote d'Ivoire</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NSIA</td>
+                        <td>Banque</td>
+                        <td>Abidjan</td>
+                        <td>0102030</td>
+                        <td>nsia@gmail.com</td>
+                        <td>Cote d'Ivoire</td>
+                        
+                        
+                        <td>
+                            <label for="detailsModal" class="btn-action"><i class="fa-regular fa-eye"></i></label>
+                            <label for="editModal" class="btn-action"><i class="fa-regular fa-pen-to-square"></i></label>
+                            <button class="btn-action btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+
+                <!-- Modal pour mofifier les détails de l'entreprise -->
+
+                <input type="checkbox" id="editModal" class="modal-toggle">
+                <div class="edit-modal">
+                    <div class="modal-content">
+                        <h2>Modifier l'entreprise</h2>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="edit-name">Nom de l’entreprise</label>
+                                <input type="text" id="edit-name" name="name" value="Onma" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-contact">Contact</label>
+                                <input type="text" id="edit-contact" name="contact" value="010203060504" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-location">Localisation</label>
+                                <input type="text" id="edit-location" name="location" value="Abidjan" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-description">Description</label>
+                                <textarea id="edit-description" name="description" rows="4" required>
+                                    ONMA est une entreprise spécialisée en solutions technologiques innovantes.
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-datecreate">Date creation</label>
+                                <input type="date" id="edit-datecreate" name="datecreate" value="01/01/2020" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-lastupd">Dernier modif/label>
+                                <input type="date" id="edit-lastudp" name="lastudp" value="01/01/2020" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-employe">Employes nb.</label>
+                                <input type="text" id="edit-employe" name="employe" value="120n" required>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button type="submit" class="btn-action">Enregistrer</button>
+                                <label for="editModal" class="btn-action btn-cancel">Annuler</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <!-- Modal pour afficher les détails de l'entreprise -->
+                <input type="checkbox" id="detailsModal" class="modal-toggle">
+                <div class="details-modal">
+                    <div class="modal-content">
+                        <div class="details-header">
+                            <div class="details-logo">
+                                <img src="logoOnma1.jpeg" alt="Logo de l'entreprise">
+                            </div>
+                        </div>  
+                        <h2>Détails de l'entreprise</h2>
+                        <p><strong>Nom :</strong> Onma</p>
+                        <p><strong>Contact :</strong> 010203060504</p>
+                        <p><strong>Region :</strong> Abidjan</p>
+                        <p><strong>Pays :</strong> Cote d'Ivoire</p>
+                        <p><strong>Description :</strong> ONMA est une entreprise spécialisée en solutions technologiques innovantes.</p>
+                        
+                        <div class="details-section">
+                            <h3>Historique / Notes</h3>
+                            <ul>
+                                <li>Créée le : 01/01/2020</li>
+                                <li>Dernière modification : 20/12/2024</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="details-section">
+                            <h3>Statistiques</h3>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <h4>Nombre d'employes</h4>
+                                    <p>120</p>
+                                    <button class="btn-action">Voir la liste</button>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Contributions </h4>
+                                    <p>95%</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Abonnement en cours</h4>
+                                    <p>Jusqu'au 2025</p>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <label for="detailsModal" class="btn-action">Fermer</label>
+                               <!-- <label for="detailsModal" class="btn-action">Modifier</label> -->
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+            </table>
+            
+             
+                <div class="pagination">
+                    <button class="btn-page">Précédent</button>
+                    <button class="btn-page">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">Suivant</button>
+                </div>
+        </div>
+        
+    </main>
+   <script src ="javaS.js"></script>
+</body>
+</html>
+
